@@ -78,7 +78,7 @@ const updateUI = (description, city, temperature) => {
 const fetchCityGeolocation = async () => { 
   try {
     const geoCall = await fetch(
-			`http://api.openweathermap.org/geo/1.0/direct?q=${searchInput.value}&limit=5&appid=ced16ccf2630a2f2d2ca0e76643db39f`
+			`http://api.openweathermap.org/geo/1.0/direct?q=${searchInput.value}&limit=5&appid={api key}`
 		);
     const geoResponse = await geoCall.json();
     const latitude = geoResponse[0].lat;
@@ -86,7 +86,7 @@ const fetchCityGeolocation = async () => {
 
     try {
       const weatherCall = await fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&exclude=hourly,daily&appid=ced16ccf2630a2f2d2ca0e76643db39f&units=metric`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&exclude=hourly,daily&appid={api key}&units=metric`
 			);
       const weatherResponse = await weatherCall.json();
       console.log(weatherResponse);
